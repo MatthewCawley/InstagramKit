@@ -47,12 +47,24 @@
 
 - (void)updateDetailsWithInfo:(NSDictionary *)info
 {
-    self.username = [[NSString alloc] initWithString:info[kUsername]];
-    self.fullName = [[NSString alloc] initWithString:info[kFullName]];
+    if (IKNotNull(info[kUsername])) {
+        self.username = [[NSString alloc] initWithString:info[kUsername]];
+    }
+    if (IKNotNull(info[kFullName])) {
+        self.fullName = [[NSString alloc] initWithString:info[kFullName]];
+    }
     
-    self.profilePictureURL = (IKNotNull(info[kProfilePictureURL])) ? [[NSURL alloc] initWithString:info[kProfilePictureURL]] : nil;
-    self.bio = (IKNotNull(info[kBio])) ? [[NSString alloc] initWithString:info[kBio]] : nil;
-    self.website = (IKNotNull(info[kWebsite])) ? [[NSURL alloc] initWithString:info[kWebsite]] : nil;
+    if (IKNotNull(info[kProfilePictureURL])) {
+        self.profilePictureURL = (IKNotNull(info[kProfilePictureURL])) ? [[NSURL alloc] initWithString:info[kProfilePictureURL]] : nil;
+    }
+    
+    if (IKNotNull(info[kBio])) {
+        self.bio = (IKNotNull(info[kBio])) ? [[NSString alloc] initWithString:info[kBio]] : nil;
+    }
+    
+    if (IKNotNull(info[kWebsite])) {
+        self.website = (IKNotNull(info[kWebsite])) ? [[NSURL alloc] initWithString:info[kWebsite]] : nil;
+    }
     
     if (IKNotNull(info[kCounts]))
     {
